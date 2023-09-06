@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../../axiosInstance";
 
 import PokemonSearchBar from "../pokemon_search_bar/PokemonSearchBar";
 
 import "./HomePage.css";
 
+
 export default function HomePage() { 
     const [pokemons, setPokemons] = useState<any[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
 
-    const fetchPokemon = async (event) => {
-        event.preventDefault();
-        const response = await axiosInstance.get(`/cards?pageSize=10`);
-        const data = response.data.data;
-        setPokemons(data);
-    }
+
 
     return (
         <div>
-            <PokemonSearchBar handlePokemonFetch={fetchPokemon} />
+            <PokemonSearchBar setLoading={setLoading} setPokemons={setPokemons} />
+            {loading && <h1>Loading...</h1>}
             {
                 pokemons.map((pokemon) => {
                     return (
@@ -31,3 +28,4 @@ export default function HomePage() {
         </div>
     )
 }
+
