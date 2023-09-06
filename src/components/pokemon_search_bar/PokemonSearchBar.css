@@ -28,7 +28,12 @@
 }
 
 .input-wrapper input {
-    padding-right: 80px; /* Adjust depending on the size of your button. This ensures text doesn't go under the button */
+    padding-right: 4rem;
+    padding-left: 3.5rem; /* Adjust depending on the size of your button. This ensures text doesn't go under the button */
+}
+
+.input-wrapper input:focus {
+    outline: none;
 }
 
 .go-button {
@@ -51,10 +56,23 @@
 }
 
 #search-filters {
-    padding: 0.3rem;
+    padding: 0.2rem;
+    border-radius: 0.5rem;
+}
+
+#search-filters:focus {
+    outline: none;
 }
 
 .search-pokemon-form {
     display: flex;
     gap: 1rem;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 }

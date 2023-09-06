@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SearchIcon from '@mui/icons-material/Search';
 import { fetchPokemon } from "../../utils/apiFunctions";
 
 import "./PokemonSearchBar.css";
@@ -37,13 +38,13 @@ export default function PokemonSearchBar(props) {
             <form className="search-pokemon-form" action="" onSubmit={handlePokemonFetch}>
                 <label className="visually-hidden" htmlFor="search-pokemon">Search Pokemon</label>
                 <div className="input-wrapper">
+                    <SearchIcon style={{ fontSize: '2rem'}} className="search-icon"/>
                     <input placeholder="E.g. Pikachu" id="search-pokemon" type="text" onChange={handleSearchTermChange}/>
                     <button className="go-button">GO</button>
                 </div>
                 <label className="visually-hidden" htmlFor="search-filters">Search Filters</label>
                 <select id="search-filters" onChange={handleSearchByFilterChange}>
-                    <option value="">Search by</option>
-                    <option value="name">Name</option>
+                    <option value="name" selected>Name</option>
                     <option value="type">Type</option>
                 </select>
             </form>
