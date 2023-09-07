@@ -6,6 +6,8 @@
     --pokemon-black: hsl(210, 11%, 15%);
     --white: hsl(0, 0%, 100%);
     --black: hsl(0, 0%, 0%);
+    --fading-blue: rgba(236,238,251,0.74);
+    --page-background: hsl(228, 100%, 99%);
 }
 
 * {

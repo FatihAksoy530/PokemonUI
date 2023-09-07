@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import PokemonSearchBar from "../pokemon_search_bar/PokemonSearchBar";
+import PokemonCard from "../pokemon_card/PokemonCard";
 
 import "./HomePage.css";
 
@@ -12,19 +13,19 @@ export default function HomePage() {
 
 
     return (
-        <div>
+        <div className="home-page-container">
             <PokemonSearchBar setLoading={setLoading} setPokemons={setPokemons} />
             {loading && <h1>Loading...</h1>}
-            {
-                pokemons.map((pokemon) => {
-                    return (
-                        <div>
-                            <h1>{pokemon.name}</h1>
-                            <img src={pokemon.images.small} alt={pokemon.name} />
-                        </div>
-                    )
-                })
-            }
+            <div className="pokemons-container">
+                {
+                    pokemons.map((pokemon) => {
+                        return (
+                            
+                                <PokemonCard key={pokemon.id} pokemon={pokemon} />
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
