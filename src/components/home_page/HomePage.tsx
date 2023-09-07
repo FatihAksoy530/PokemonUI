@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import PokemonSearchBar from "../pokemon_search_bar/PokemonSearchBar";
 import PokemonCard from "../pokemon_card/PokemonCard";
+import PokeballSpinner from "../pokeball_spinner/PokeballSpinner";
 
 import "./HomePage.css";
 
@@ -24,8 +25,8 @@ export default function HomePage() {
 
     return (
         <div className="home-page-container">
+            <PokeballSpinner loading={ loading } />
             <PokemonSearchBar setSelectedCards={setSelectedCards} setLoading={setLoading} setPokemons={setPokemons} />
-            {loading && <h1>Loading...</h1>}
             <div className="pokemons-container">
                 {
                     pokemons.map((pokemon) => {
