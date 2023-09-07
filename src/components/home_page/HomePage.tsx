@@ -9,19 +9,34 @@ import "./HomePage.css";
 export default function HomePage() { 
     const [pokemons, setPokemons] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
+    const [selectedCards, setSelectedCards] = useState([]);
 
 
+    const handleCardClick = (cardIndex) => {
+        if (selectedCards.includes(cardIndex)) {
+            // If the card is already selected, remove it from the array
+            setSelectedCards(prevCards => prevCards.filter(index => index !== cardIndex));
+        } else {
+            // If the card isn't selected, add it to the array
+            setSelectedCards(prevCards => [...prevCards, cardIndex]);
+        }
+    }
 
     return (
         <div className="home-page-container">
-            <PokemonSearchBar setLoading={setLoading} setPokemons={setPokemons} />
+            <PokemonSearchBar setSelectedCards={setSelectedCards} setLoading={setLoading} setPokemons={setPokemons} />
             {loading && <h1>Loading...</h1>}
             <div className="pokemons-container">
                 {
                     pokemons.map((pokemon) => {
                         return (
                             
-                                <PokemonCard key={pokemon.id} pokemon={pokemon} />
+                            <PokemonCard
+                                key={pokemon.id}
+                                pokemon={pokemon}
+                                flippedClass={selectedCards.includes(pokemon.id) ? "flipped" : ""}
+                                handleCardClick={handleCardClick}
+                            />
                         )
                     })
                 }

@@ -6,8 +6,8 @@ import "./PokemonSearchBar.css";
 
 export default function PokemonSearchBar(props) { 
     const [searchTerm, setSearchTerm] = useState<string>("");
-    const [searchByFilter, setSearchByFilter] = useState<string>("name"); // ["name", "type"
-    const { setPokemons, setLoading } = props;
+    const [searchByFilter, setSearchByFilter] = useState<string>("name");
+    const { setPokemons, setLoading, setSelectedCards } = props;
 
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
@@ -18,6 +18,8 @@ export default function PokemonSearchBar(props) {
     }
 
     const handlePokemonFetch = (event) => { 
+        setSelectedCards([]);
+        setPokemons([]);
         event.preventDefault();
         setLoading(true);
         fetchPokemon(searchTerm, searchByFilter)
@@ -32,6 +34,7 @@ export default function PokemonSearchBar(props) {
             })
     }
 
+
     return (
         <div className="pokemon-search-container">
             <h2>Who are you looking for?</h2>
@@ -43,8 +46,8 @@ export default function PokemonSearchBar(props) {
                     <button className="go-button">GO</button>
                 </div>
                 <label className="visually-hidden" htmlFor="search-filters">Search Filters</label>
-                <select id="search-filters" onChange={handleSearchByFilterChange}>
-                    <option value="name" selected>Name</option>
+                <select id="search-filters" onChange={handleSearchByFilterChange} defaultValue="name">
+                    <option value="name">Name</option>
                     <option value="type">Type</option>
                 </select>
             </form>
