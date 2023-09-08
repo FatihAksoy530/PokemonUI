@@ -36,7 +36,7 @@ const typeColors: TypeColor = {
         color: "#000000",
     },
     "Lightning": {
-        backgroundColor: "linear-gradient(to bottom, #7ac74c, #80cb54, #87cf5c, #8dd263, #93d66b)",
+        backgroundColor: "linear-gradient(to bottom, #f8d030, #e2bd2c, #ccab27, #b69923, #a1871f)",
         color: "#000000",
     },
     "Metal": {
