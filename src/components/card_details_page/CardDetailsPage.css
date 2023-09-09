@@ -87,3 +87,7 @@ p{
     height: 100%;
     object-fit: cover;
 }
+
+.shadow.paused {
+    animation-play-state: paused;
+}
