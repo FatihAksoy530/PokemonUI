@@ -1,19 +1,40 @@
 .navbar-container {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 200px;
+    background-color: var(--pokemon-red);
+    z-index: 10;
+    transition: left 0.3s;
+    height: 100%;
+
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5); /* semi-transparent */
+    z-index: 9; /* make sure it's below the sidebar */
+}
+
+.overlay-open {
+    display: block;
+}
+
+.navbar{
     display: flex;
     justify-content: center;
-    align-items: center;
+    flex-direction: column;
     padding: 1rem;
-    position: sticky;
     top: 0;
-    z-index: 2;
-    text-align: center;
     gap: 4rem;
 }
 
-.to-home-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.navbar-btn {
     gap: 0.5rem;
     padding: 0.5rem;
     border-radius: 0.5rem;
@@ -22,5 +43,51 @@
     font-weight: 600;
     font-size: 1.2rem;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    text-align: center;
+}
+
+.navbar-btn:hover {
+    background-color: var(--pokemon-blue);
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-open {
+    left: 0;
+}
+
+.sidebar-icon-container {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.sidebar-icon {
+    color: var(--pokemon-black);
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 0 0.25rem 0.25rem 0;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    padding: 0.2rem;
+}
+
+.sidebar-icon:hover {
+    color: var(--white);
+    background-color: var(--pokemon-red);
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
