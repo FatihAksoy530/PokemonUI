@@ -23,15 +23,6 @@
     transition: all 0.3s ease-in-out;
 }
 
-p{
-  margin-top: 0;
-  font-family: Oswald, sans-serif;
-  font-size: 30px;
-  letter-spacing: 2px;
-  color: rgb(255, 43, 43);
-  
-}
-
 @-webkit-keyframes shimmy{
   0%, 100%{
     transform: rotateY(0deg) skewX(0deg);

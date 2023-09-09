@@ -1,13 +1,41 @@
-import Navbar from "../../components/navbar/Navbar"
-import PokemonSearchBar from "../../components/pokemon_search_bar/PokemonSearchBar"
-import HomePage from "../../components/home_page/HomePage"
+import React, { createContext, useContext, useState } from 'react';
+import Navbar from "../../components/navbar/Navbar";
+import ErrorPopup from "../../components/error_popup/ErrorPopup";
 import { Outlet } from "react-router-dom";
+
+const ErrorContext = createContext({});
+
+export const useError = () => {
+    return useContext(ErrorContext);
+  };
+  
+  export const ErrorProvider = ({ children }) => {
+      const [error, setError] = useState("An internal error occured during your request!");
+      const [popupVisible, setPopupVisible] = useState(false);
+  
+      const showError = (message) => {
+          if (message) {
+            setError(message);
+          }
+        setPopupVisible(true);
+        setTimeout(() => setPopupVisible(false), 3000);
+    };
+  
+    return (
+      <ErrorContext.Provider value={showError}>
+        {children}
+        {<ErrorPopup setPopupVisible={setPopupVisible} message={error} popupVisible={ popupVisible } />}
+      </ErrorContext.Provider>
+    );
+  };
 
 export default function Root() { 
     return (
         <div>
-            <Navbar />
-            <Outlet/>
+            <ErrorProvider>
+                <Navbar />
+                <Outlet />
+            </ErrorProvider>
         </div>
     )
 }

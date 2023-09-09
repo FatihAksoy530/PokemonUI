@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
-
+import { useError } from "../../routes/root/Root";
 import PokemonSearchBar from "../pokemon_search_bar/PokemonSearchBar";
 import PokemonCard from "../pokemon_card/PokemonCard";
 import PokeballSpinner from "../pokeball_spinner/PokeballSpinner";
@@ -15,6 +14,7 @@ export default function HomePage() {
     const [loading, setLoading] = useState<boolean>(false);
     const [selectedCards, setSelectedCards] = useState([]);
     const [noResult, setNoResult] = useState<boolean>(false);
+    const showError = useError();
 
     const handleCardClick = (cardIndex) => {
         if (selectedCards.includes(cardIndex)) {
@@ -52,10 +52,11 @@ export default function HomePage() {
             })
             .finally(() => {
                 setLoading(false);
+                showError();
             })
     }, [])
 
-    
+
     return (
         <div className="home-page-container">
             <PokeballSpinner loading={ loading } />

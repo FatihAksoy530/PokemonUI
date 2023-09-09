@@ -1,4 +1,4 @@
-import { Form, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import axiosInstance from "../../axiosInstance";
 import "./CardDetailsPage.css";
