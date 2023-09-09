@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 
 import PokemonSearchBar from "../pokemon_search_bar/PokemonSearchBar";
 import PokemonCard from "../pokemon_card/PokemonCard";
 import PokeballSpinner from "../pokeball_spinner/PokeballSpinner";
 import NoSearchResult from "../no_search_result/NoSearchResult";
+import { fetchPokemon } from "../../utils/apiFunctions";
 
 import "./HomePage.css";
 
 
 export default function HomePage() { 
-    const [pokemons, setPokemons] = useState<any[]>([]);
+    const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [selectedCards, setSelectedCards] = useState([]);
     const [noResult, setNoResult] = useState<boolean>(false);
-
 
     const handleCardClick = (cardIndex) => {
         if (selectedCards.includes(cardIndex)) {
@@ -25,6 +26,36 @@ export default function HomePage() {
         }
     }
 
+
+    useEffect(() => { 
+        const url = new URL(window.location.href);
+        const searchTerm = url.searchParams.get("searchTerm");
+        const searchByFilter = url.searchParams.get("searchByFilter") || "name";
+        if (!searchTerm) {
+            return;
+        }
+        setLoading(true);
+        setNoResult(false);
+        fetchPokemon(searchTerm, searchByFilter)
+            .then((response) => {
+                setPokemons(response.data.data);
+                if (response.data.data.length === 0) { 
+                    setNoResult(true);
+                }
+                else {
+                    setNoResult(false);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                setPokemons([]);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+    }, [])
+
+    
     return (
         <div className="home-page-container">
             <PokeballSpinner loading={ loading } />

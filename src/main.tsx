@@ -4,7 +4,6 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import App from './App.tsx';
 import Root from './routes/root/Root.tsx';
 import ErrorPage from './ErrorPage.tsx';
 import CardDetailsPage, {
@@ -23,7 +22,7 @@ const router  = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <HomePage />
       },
       {
         path: "cards/:cardId",

@@ -4,6 +4,7 @@ import { fetchPokemon } from "../../utils/apiFunctions";
 
 import "./PokemonSearchBar.css";
 
+
 export default function PokemonSearchBar(props) { 
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [searchByFilter, setSearchByFilter] = useState<string>("name");
@@ -17,10 +18,18 @@ export default function PokemonSearchBar(props) {
         setSearchByFilter(event.target.value);
     }
 
+    const updateUrl = (searchTerm : string, searchByFilter : string) => {
+        const url = new URL(window.location.href);
+        url.searchParams.set("searchTerm", searchTerm);
+        url.searchParams.set("searchByFilter", searchByFilter);
+        window.history.pushState({}, "", url);
+     }
+
     const handlePokemonFetch = (event) => { 
+        event.preventDefault();
+        updateUrl(searchTerm, searchByFilter);
         setSelectedCards([]);
         setPokemons([]);
-        event.preventDefault();
         setLoading(true);
         setNoResult(false);
         fetchPokemon(searchTerm, searchByFilter)
