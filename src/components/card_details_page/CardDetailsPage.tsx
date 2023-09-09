@@ -16,7 +16,17 @@ export default function CardDetailsPage() {
     return (
         <div>
             <h1>CardDetailsPage</h1>
-            <h3>{ card.name }</h3>
+            <h3>{card.name}</h3>
+            <div className="contain">
+                <div className="card">
+                    <div className="shine">
+                        
+                    </div>
+                    <img className="large-pokemon-image" src={card.images.large} alt="" />
+                </div>
+                <div className="shadow"></div>
+            </div>
+            
         </div>
     )
 }
