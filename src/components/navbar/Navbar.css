@@ -1,0 +1,26 @@
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    text-align: center;
+    gap: 4rem;
+}
+
+.to-home-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.2rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}

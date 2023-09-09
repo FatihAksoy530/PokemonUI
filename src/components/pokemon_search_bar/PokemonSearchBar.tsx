@@ -7,7 +7,7 @@ import "./PokemonSearchBar.css";
 export default function PokemonSearchBar(props) { 
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [searchByFilter, setSearchByFilter] = useState<string>("name");
-    const { setPokemons, setLoading, setSelectedCards } = props;
+    const { setNoResult, setPokemons, setLoading, setSelectedCards } = props;
 
     const handleSearchTermChange = (event) => {
         setSearchTerm(event.target.value);
@@ -22,12 +22,20 @@ export default function PokemonSearchBar(props) {
         setPokemons([]);
         event.preventDefault();
         setLoading(true);
+        setNoResult(false);
         fetchPokemon(searchTerm, searchByFilter)
             .then((response) => {
                 setPokemons(response.data.data);
+                if (response.data.data.length === 0) { 
+                    setNoResult(true);
+                }
+                else {
+                    setNoResult(false);
+                }
             })
             .catch((error) => {
                 console.log(error);
+                setPokemons([]);
             })
             .finally(() => {
                 setLoading(false);

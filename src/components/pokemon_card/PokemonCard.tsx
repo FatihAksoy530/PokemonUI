@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-
+import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
+import { Link } from 'react-router-dom';
 import typeColors from '../../utils/pokemonTypeColors';
 import './PokemonCard.css';
 
@@ -11,7 +12,6 @@ export default function PokemonCard(props) {
         color: 'black',
         backgroundColor: 'white'
     });
-
 
 
     useEffect(() => {
@@ -30,8 +30,8 @@ export default function PokemonCard(props) {
      }, [pokemon]);
 
     return (
-
-        <div className='pokemon-card-container' onClick={() => { handleCardClick(pokemon.id) }}>
+        <div>
+            <div className='pokemon-card-container' onClick={() => { handleCardClick(pokemon.id) }}>
                 <div className='pokemon-card-container-front'>
                     <div className='pokemon-card-container-front-header'>
                         <h3>{pokemon.name}</h3>
@@ -54,19 +54,24 @@ export default function PokemonCard(props) {
                                 <li>Number: { pokemon.number }</li>
                                 <li>Artist: {pokemon.artist}</li>
                                 <li>Rarity: {pokemon.rarity}</li>
-                        <li>Types: <ul>
-                                        {pokemonTypes.map((type, index) => {
-                                            return (
-                                                <>
-                                                    <li key={index}>{type}</li>
-                                                </>
-                                            )
-                                        })}
-                                    </ul>
+                                <li>Types: <ul>
+                                                {pokemonTypes.map((type, index) => {
+                                                    return (
+                                                        <>
+                                                            <li key={index}>{type}</li>
+                                                        </>
+                                                    )
+                                                })}
+                                            </ul>
                                 </li>
                             </ul>
                     </div>
                 </div>
+            </div>
+            <div className='card-details-link-container'>
+                <Link className='card-details-link' to={`/cards/${pokemon.id}`}><CatchingPokemonIcon className='pokemon-icon' style={{fontSize: "2rem"}}/></Link>                               
+            </div>
+            
         </div>
     )
 }

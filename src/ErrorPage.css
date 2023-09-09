@@ -1,0 +1,18 @@
+.empty-page-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 1rem;
+}
+
+.to-home-page {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.to-home-page:hover {
+    text-decoration: underline;
+}

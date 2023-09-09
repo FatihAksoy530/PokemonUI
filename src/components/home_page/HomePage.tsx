@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import PokemonSearchBar from "../pokemon_search_bar/PokemonSearchBar";
 import PokemonCard from "../pokemon_card/PokemonCard";
 import PokeballSpinner from "../pokeball_spinner/PokeballSpinner";
+import NoSearchResult from "../no_search_result/NoSearchResult";
 
 import "./HomePage.css";
 
@@ -11,6 +12,7 @@ export default function HomePage() {
     const [pokemons, setPokemons] = useState<any[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [selectedCards, setSelectedCards] = useState([]);
+    const [noResult, setNoResult] = useState<boolean>(false);
 
 
     const handleCardClick = (cardIndex) => {
@@ -26,7 +28,8 @@ export default function HomePage() {
     return (
         <div className="home-page-container">
             <PokeballSpinner loading={ loading } />
-            <PokemonSearchBar setSelectedCards={setSelectedCards} setLoading={setLoading} setPokemons={setPokemons} />
+            <PokemonSearchBar setNoResult={setNoResult} setSelectedCards={setSelectedCards} setLoading={setLoading} setPokemons={setPokemons} />
+            { noResult && <NoSearchResult />}
             <div className="pokemons-container">
                 {
                     pokemons.map((pokemon) => {
