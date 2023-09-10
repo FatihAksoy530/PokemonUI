@@ -1,8 +1,8 @@
 .navbar-container {
     position: fixed;
     top: 0;
-    left: -300px;
-    width: 200px;
+    left: -400px;
+    width: 300px;
     background-color: var(--pokemon-red);
     z-index: 10;
     transition: left 0.3s;

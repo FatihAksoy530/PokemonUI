@@ -3,10 +3,22 @@
     gap: 1rem;
     padding: 2rem;
     background-color: var(--pokemon-blue);
+    position: relative;
+}
+
+.pokemon-search-container::before {
+    content: '';
     background-image: url('/public/images/svg/pokeball.svg');
     background-repeat: no-repeat;
-    background-position: right 1rem bottom 50%;
-    background-size: 9rem;
+    background-position: center;
+    background-size: 100%;
+    width: 9rem;
+    height: 9rem;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    opacity: 0.4;
 }
 
 .pokemon-search-container h2 {

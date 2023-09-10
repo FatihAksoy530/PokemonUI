@@ -13,7 +13,7 @@ export default function HomePage() {
     const [pokemons, setPokemons] = useState([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [selectedCards, setSelectedCards] = useState([]);
-    const [noResult, setNoResult] = useState<boolean>(false);
+    const [noResult, setNoResult] = useState<boolean>(true);
     const showError = useError();
 
     const handleCardClick = (cardIndex) => {
@@ -48,35 +48,34 @@ export default function HomePage() {
             })
             .catch((error) => {
                 console.log(error);
+                showError();
                 setPokemons([]);
             })
             .finally(() => {
                 setLoading(false);
-                showError();
             })
     }, [])
 
 
     return (
         <div className="home-page-container">
-            <PokeballSpinner loading={ loading } />
             <PokemonSearchBar setNoResult={setNoResult} setSelectedCards={setSelectedCards} setLoading={setLoading} setPokemons={setPokemons} />
             { noResult && <NoSearchResult />}
             <div className="pokemons-container">
                 {
                     pokemons.map((pokemon) => {
                         return (
-                            
                             <PokemonCard
-                                key={pokemon.id}
-                                pokemon={pokemon}
-                                flippedClass={selectedCards.includes(pokemon.id) ? "flipped" : ""}
-                                handleCardClick={handleCardClick}
+                            key={pokemon.id}
+                            pokemon={pokemon}
+                            flippedClass={selectedCards.includes(pokemon.id) ? "flipped" : ""}
+                            handleCardClick={handleCardClick}
                             />
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
             </div>
+            <PokeballSpinner loading={ loading } />
         </div>
     )
 }

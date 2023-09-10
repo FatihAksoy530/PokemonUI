@@ -6,9 +6,7 @@ export default function PokeballSpinner(props) {
     return (
     <>
         {loading && 
-        <div className="pokeball-spinner-container">
-            <div className="pokeball-spinner"></div>
-        </div>
+        <div className="pokeball-spinner"></div>
         }
     </>
     )
