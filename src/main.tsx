@@ -9,7 +9,7 @@ import ErrorPage from './ErrorPage.tsx';
 import CardDetailsPage, {
   loader as cardDetailsPageLoader,
 } from './components/card_details_page/CardDetailsPage.tsx';
-import HomePage from './components/home_page/HomePage.tsx';
+import HomePage from './routes/home/HomePage.tsx';
 import './index.css';
 import './css_reset.css';
 import './variables.css';

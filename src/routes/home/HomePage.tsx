@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useError } from "../../routes/root/Root";
-import PokemonSearchBar from "../pokemon_search_bar/PokemonSearchBar";
-import PokemonCard from "../pokemon_card/PokemonCard";
-import PokeballSpinner from "../pokeball_spinner/PokeballSpinner";
-import NoSearchResult from "../no_search_result/NoSearchResult";
+import PokemonSearchBar from "../../components/pokemon_search_bar/PokemonSearchBar";
+import PokemonCard from "../../components/pokemon_card/PokemonCard";
+import PokeballSpinner from "../../components/pokeball_spinner/PokeballSpinner";
+import NoSearchResult from "../../components/no_search_result/NoSearchResult";
+import { usePageLoader } from "../../contexts/PageLoaderProvider/PageLoaderProvider";
 import { fetchPokemon } from "../../utils/apiFunctions";
 
 import "./HomePage.css";
@@ -15,6 +16,7 @@ export default function HomePage() {
     const [selectedCards, setSelectedCards] = useState([]);
     const [noResult, setNoResult] = useState<boolean>(true);
     const showError = useError();
+    const { finishLoading } = usePageLoader();
 
     const handleCardClick = (cardIndex) => {
         if (selectedCards.includes(cardIndex)) {
@@ -54,7 +56,8 @@ export default function HomePage() {
             .finally(() => {
                 setLoading(false);
             })
-    }, [])
+        finishLoading();
+    }, [showError])
 
 
     return (
