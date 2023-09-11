@@ -1,0 +1,14 @@
+.page-loader-bar {
+    position: fixed; /* Fixed at the top */
+    top: 0;
+    left: 0;
+    height: 4px; /* Change to adjust thickness */
+    background-color: #3498db; /* Color of the loading bar */
+    z-index: 9999; /* Stay on top */
+    transition: width 0.4s ease-out, opacity 0.5s ease-in-out; /* Smooth transition for width and opacity */
+    opacity: 1;
+  }
+  
+  .page-loader-bar.hide {
+    opacity: 0; /* When loading is complete, we'll fade out */
+  }

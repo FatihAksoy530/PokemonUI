@@ -9,6 +9,7 @@
     --black: hsl(0, 0%, 0%);
     --fading-blue: rgba(236,238,251,0.74);
     --page-background: hsl(228, 100%, 97%);
+    --transparent-black: rgba(0,0,0,0.5);
 }
 
 * {
