@@ -4,6 +4,7 @@
     padding: 2rem;
     background-color: var(--pokemon-blue);
     position: relative;
+    overflow: hidden;
 }
 
 .pokemon-search-container::before {
@@ -12,13 +13,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
-    width: 9rem;
-    height: 9rem;
+    width: 12rem;
+    height: 12rem;
     position: absolute;
     top: 50%;
     right: 1rem;
     transform: translateY(-50%);
     opacity: 0.4;
+    z-index: 1;
 }
 
 .pokemon-search-container h2 {
