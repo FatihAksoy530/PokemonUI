@@ -6,9 +6,7 @@ import {
 } from "react-router-dom";
 import Root from './routes/root/Root.tsx';
 import ErrorPage from './ErrorPage.tsx';
-import CardDetailsPage, {
-  loader as cardDetailsPageLoader,
-} from './components/card_details_page/CardDetailsPage.tsx';
+import CardDetailsPage from './components/card_details_page/CardDetailsPage.tsx';
 import HomePage from './routes/home/HomePage.tsx';
 import './index.css';
 import './css_reset.css';
@@ -27,7 +25,6 @@ const router  = createBrowserRouter([
       {
         path: "cards/:cardId",
         element: <CardDetailsPage />,
-        loader: cardDetailsPageLoader,
       },
     ]
   }
