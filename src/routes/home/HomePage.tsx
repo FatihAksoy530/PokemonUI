@@ -33,6 +33,7 @@ export default function HomePage() {
         const url = new URL(window.location.href);
         const searchTerm = url.searchParams.get("searchTerm");
         const searchByFilter = url.searchParams.get("searchByFilter") || "name";
+        finishLoading();
         if (!searchTerm) {
             return;
         }
@@ -56,7 +57,6 @@ export default function HomePage() {
             .finally(() => {
                 setLoading(false);
             })
-        finishLoading();
     }, [showError])
 
 
