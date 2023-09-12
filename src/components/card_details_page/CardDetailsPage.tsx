@@ -1,21 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useError } from "../../routes/root/Root";
-import axiosInstance from "../../axiosInstance";
 import { usePageLoader } from "../../contexts/PageLoaderProvider/PageLoaderProvider";
+import axiosInstance from "../../axiosInstance";
+import Tree from "../card_tree_node/CardTreeNode";
 import "./CardDetailsPage.css";
+import "./CardAnimation.css";
 
-
-export async function loader({ params }) { 
-    const { cardId } = params;
-    const { data } = await axiosInstance.get(`/cards?q=id:${cardId}`);
-    const card = data.data[0];
-    return card;
-}
 
 export default function CardDetailsPage() {
-    const [shadowAnimationPlayState, setshadowAnimationPlayState] = useState(false);
-    const [card, setCard] = useState({ images: {}});
+    const [shadowAnimationPlayState, setshadowAnimationPlayState] = useState<boolean>(false);
+    const [card, setCard] = useState(null);
     const showError = useError();
     const { finishLoading } = usePageLoader();
 
@@ -38,21 +33,36 @@ export default function CardDetailsPage() {
             .finally(() => {
                 finishLoading();
             })
-    }, [showError, finishLoading])
+    }, [])
 
     return (
-        <div>
-            <h1>CardDetailsPage</h1>
-            <h3>{card.name}</h3>
-            <div className="contain">
-                <div className="card" onMouseEnter={() => setshadowAnimationPlayState(true)}
-                onMouseLeave={() => setshadowAnimationPlayState(false)}>
-                    <div className="shine"></div>
-                    <img className="large-pokemon-image" src={card.images.large} alt="" />
+        <>
+            {
+                card &&
+                (
+                    <div className="details-page-container">
+                        <div className="pokemon-card-detailed-container">
+                            <div className="details-page-header">
+                                <h1>{card.name}</h1>
+                            </div>
+                            <div className="contain">
+                                <div className="card" onMouseEnter={() => setshadowAnimationPlayState(true)}
+                                onMouseLeave={() => setshadowAnimationPlayState(false)}>
+                                    <div className="shine"></div>
+                                    <img className="large-pokemon-image" src={card.images.large} alt="" />
+                                </div>
+                                <div className="shadow-container">
+                                    <div className={`shadow ${shadowAnimationPlayState ? 'paused' : ""}`}></div>
+                                </div>
+                                <div className="card-information">
+                                    <h2>Information</h2>
+                                    <Tree data={card} />
+                                </div>
+                            </div>
+                        </div>
                 </div>
-                <div className={`shadow ${shadowAnimationPlayState ? 'paused' : ""}`}></div>
-            </div>
-            
-        </div>
+                )
+            }
+        </>
     )
 }
