@@ -1,0 +1,45 @@
+footer {
+    background-color: var(--pokemon-blue);
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    grid-area: footer;
+    padding: 1rem;
+}
+
+footer ul {
+    padding: 0;
+    list-style: none;
+}
+
+footer a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+footer a:hover {
+    color: var(--pokemon-red);
+}
+
+.social-links-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+}
+
+.page-links-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+}
+
+
+
+
+

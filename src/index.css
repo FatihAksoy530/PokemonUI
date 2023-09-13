@@ -5,3 +5,14 @@ body {
     min-height: 100vh;
     background-color: var(--page-background);
 }
+
+#root {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 9fr 1fr;
+    grid-template-areas: 
+        "main"
+        "footer";
+    grid-auto-rows: 0px;
+    gap: 1rem;
+}

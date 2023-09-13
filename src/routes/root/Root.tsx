@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import Navbar from "../../components/navbar/Navbar";
 import ErrorPopup from "../../components/error_popup/ErrorPopup";
 import { PageLoaderProvider } from '../../contexts/PageLoaderProvider/PageLoaderProvider';
 import { Outlet } from "react-router-dom";
+import Footer from '../../components/footer/Footer';
 
 const ErrorContext = createContext({});
 
@@ -33,13 +34,12 @@ export const ErrorProvider = ({ children }) => {
 export default function Root() { 
 
     return (
-      <div>
           <PageLoaderProvider>
             <ErrorProvider>
-                  <Navbar />
-                  <Outlet />
+              <Navbar />
+              <Outlet />
+              <Footer />
             </ErrorProvider>
           </PageLoaderProvider>
-        </div>
     )
 }
