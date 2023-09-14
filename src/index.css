@@ -15,4 +15,5 @@ body {
         "footer";
     grid-auto-rows: 0px;
     gap: 1rem;
+    min-height: 100vh;
 }
