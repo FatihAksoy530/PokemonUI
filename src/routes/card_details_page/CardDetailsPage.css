@@ -19,6 +19,7 @@
     padding: 2rem;
     border-radius: 1rem;
     grid-template-columns: 1fr;
+    margin-top: 1rem;
 }
 
 .contain {
@@ -26,6 +27,13 @@
     grid-template-columns: 1fr;
     gap: 1rem;
     justify-items: center;
+}
+
+.card-information {
+    justify-self: stretch;
+    background-color: var(--page-background);
+    padding: 1.5rem;
+    border-radius: 1.5rem;
 }
 
 .card-information h2{

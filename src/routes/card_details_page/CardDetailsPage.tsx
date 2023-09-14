@@ -1,9 +1,9 @@
 import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useError } from "../../routes/root/Root";
+import { useError } from "../root/Root";
 import { usePageLoader } from "../../contexts/PageLoaderProvider/PageLoaderProvider";
 import axiosInstance from "../../axiosInstance";
-import Tree from "../card_tree_node/CardTreeNode";
+import Tree from "../../components/card_tree_node/CardTreeNode";
 import "./CardDetailsPage.css";
 import "./CardAnimation.css";
 
@@ -55,7 +55,6 @@ export default function CardDetailsPage() {
                                     <div className={`shadow ${shadowAnimationPlayState ? 'paused' : ""}`}></div>
                                 </div>
                                 <div className="card-information">
-                                    <h2>Information</h2>
                                     <Tree data={card} />
                                 </div>
                             </div>
