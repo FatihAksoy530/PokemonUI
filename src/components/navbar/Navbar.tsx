@@ -24,6 +24,7 @@ export default function Navbar() {
             <div className={`navbar-container ${navbarOpenClass}`}>
                 <nav className="navbar">
                     <Link className='navbar-btn' to="/">Home</Link>
+                    <Link className='navbar-btn' to="/about">About</Link>
                 </nav>
             </div>
             <div className='sidebar-icon-container' onClick={()=>{handleNavbarOpenClassChange(true)}}>
