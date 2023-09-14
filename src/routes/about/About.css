@@ -1,0 +1,17 @@
+.about-page-container {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.about-page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 1rem;
+    gap: 1rem;
+}
