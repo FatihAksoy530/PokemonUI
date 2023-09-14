@@ -3,7 +3,7 @@ import Navbar from "../../components/navbar/Navbar";
 import ErrorPopup from "../../components/error_popup/ErrorPopup";
 import { PageLoaderProvider } from '../../contexts/PageLoaderProvider/PageLoaderProvider';
 import { Outlet } from "react-router-dom";
-import Footer from '../../components/footer/Footer';
+import MemoizedFooter from "../../components/footer/Footer";
 
 const ErrorContext = createContext({});
 
@@ -38,7 +38,7 @@ export default function Root() {
             <ErrorProvider>
               <Navbar />
               <Outlet />
-              <Footer />
+              <MemoizedFooter />
             </ErrorProvider>
           </PageLoaderProvider>
     )

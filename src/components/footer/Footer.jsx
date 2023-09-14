@@ -1,10 +1,11 @@
+import React from 'react';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Link } from 'react-router-dom';
 import "./Footer.css";
 
 
-export default function Footer() {
+function Footer() {
     return (
         <footer>
             <ul className="social-links-container">
@@ -18,3 +19,6 @@ export default function Footer() {
         </footer>
     );
 }
+
+const MemoizedFooter = React.memo(Footer);
+export default MemoizedFooter;
