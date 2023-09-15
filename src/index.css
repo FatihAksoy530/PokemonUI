@@ -9,7 +9,7 @@ body {
 #root {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 9fr 1fr;
+    grid-template-rows: 9fr 10vh;
     grid-template-areas: 
         "main"
         "footer";
