@@ -65,7 +65,7 @@ export default function PokemonSearchBar(props) {
                 <label className="visually-hidden" htmlFor="search-filters">Search Filters</label>
                 <select id="search-filters" onChange={handleSearchByFilterChange} defaultValue="name">
                     <option value="name">Name</option>
-                    <option value="type">Type</option>
+                    <option value="types">Type</option>
                 </select>
             </form>
         </div>
