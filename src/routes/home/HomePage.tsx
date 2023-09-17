@@ -15,7 +15,7 @@ export default function HomePage() {
     const [loading, setLoading] = useState<boolean>(false);
     const [selectedCards, setSelectedCards] = useState([]);
     const [noResult, setNoResult] = useState<boolean>(true);
-    const showError = useError();
+    const { showError } = useError();
     const { finishLoading } = usePageLoader();
 
     const handleCardClick = (cardIndex) => {
@@ -57,7 +57,7 @@ export default function HomePage() {
             .finally(() => {
                 setLoading(false);
             })
-    }, [showError])
+    }, [finishLoading, showError])
 
 
     return (

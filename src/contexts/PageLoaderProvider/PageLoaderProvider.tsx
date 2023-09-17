@@ -2,7 +2,13 @@ import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import "./PageLoaderProvider.css";
 
-const PageLoaderContext = createContext({});
+
+type PageLoaderContextType = {
+    finishLoading: () => void;
+};
+
+
+const PageLoaderContext = createContext<PageLoaderContextType | undefined>(undefined);
 
 export const usePageLoader = () => {
     return useContext(PageLoaderContext);

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import "./ErrorPopup.css";
 

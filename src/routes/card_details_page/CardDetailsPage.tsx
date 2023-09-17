@@ -1,4 +1,3 @@
-import { useLoaderData } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useError } from "../root/Root";
 import { usePageLoader } from "../../contexts/PageLoaderProvider/PageLoaderProvider";
@@ -11,7 +10,7 @@ import "./CardAnimation.css";
 export default function CardDetailsPage() {
     const [shadowAnimationPlayState, setshadowAnimationPlayState] = useState<boolean>(false);
     const [card, setCard] = useState(null);
-    const showError = useError();
+    const { showError } = useError();
     const { finishLoading } = usePageLoader();
 
 
@@ -33,7 +32,7 @@ export default function CardDetailsPage() {
             .finally(() => {
                 finishLoading();
             })
-    }, [])
+    }, [finishLoading, showError])
 
     return (
         <>

@@ -1,11 +1,15 @@
-import React, { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 import Navbar from "../../components/navbar/Navbar";
 import ErrorPopup from "../../components/error_popup/ErrorPopup";
 import { PageLoaderProvider } from '../../contexts/PageLoaderProvider/PageLoaderProvider';
 import { Outlet } from "react-router-dom";
 import MemoizedFooter from "../../components/footer/Footer";
 
-const ErrorContext = createContext({});
+type ErrorContextType = {
+  showError: (message?: string) => void;
+};
+
+const ErrorContext = createContext<ErrorContextType | undefined>(undefined);
 
 export const useError = () => {
     return useContext(ErrorContext);
@@ -24,7 +28,7 @@ export const ErrorProvider = ({ children }) => {
   };
 
   return (
-    <ErrorContext.Provider value={showError}>
+    <ErrorContext.Provider value={{showError}}>
       {children}
       {<ErrorPopup setPopupVisible={setPopupVisible} message={error} popupVisible={ popupVisible } />}
     </ErrorContext.Provider>

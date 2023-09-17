@@ -8,7 +8,7 @@ export default function About() {
     
     useEffect(() => {
         finishLoading();
-    }, []);
+    }, [finishLoading]);
 
     return (
         <main className="about-page-container">

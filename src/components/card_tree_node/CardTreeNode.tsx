@@ -1,6 +1,4 @@
-import { stringify } from 'querystring';
-import React, { useState, useEffect } from 'react';
-import { isConvertibleToInt } from '../../utils/helperFunctions';
+import { useState, useEffect } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import "./CardTreeNode.css";
