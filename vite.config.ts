@@ -14,6 +14,6 @@ export default defineConfig({
 },
 //Add build if you are going to use a Git-based (Github or CodeCommit) deployement
 build: {
-  outDir: "build",
+  outDir: "dist",
 }
 })
