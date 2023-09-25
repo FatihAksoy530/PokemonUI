@@ -1,7 +1,13 @@
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import "./ErrorPopup.css";
 
-export default function ErrorPopup(props) {
+type ErrorPopupProps = {
+    message: string;
+    popupVisible: boolean;
+    setPopupVisible: (visible: boolean) => void;
+};
+
+export default function ErrorPopup(props: ErrorPopupProps) {
     const { message, popupVisible, setPopupVisible } = props;
     return (
         <>
